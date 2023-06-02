@@ -127,14 +127,14 @@ ss">
                   <div class="custom-file">
 
                     <input type="file" name="gambar_post" class="custom-file-input" required>
-                    <label class="custom-filelabel">Pilih File Gambar</label>
+                    <label class="custom-file-label">Pilih File Gambar</label>
                   </div>
                 </div>
               </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button type="submit" class="btn btnprimary">Simpan</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
               <a href="index.php" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>
