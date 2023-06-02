@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tambah Data Barang</title>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,40
 0i,700&display=fallback">
@@ -105,17 +106,23 @@ ss">
                 <label>Pilih Gambar</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file" name="gambar_post" class="custom-file-input">
-                    <label class="custom-filelabel">Pilih File Gambar</label>
+
+                    <input style="width: 100px; height: 100px; border: 1px solid #000;" type="file" name="gambar_post" class="custom-file-input">
+
+                    <?php
+                    $page_file_temp = $_SERVER["PHP_SELF"];
+                    ?>
+                    <!-- <img width="100" src="gambar/<?= $data['gambar']; ?>" width="100px"> -->
+                    <label class="custom-file-label">Pilih File Gambar</label>
                   </div>
                 </div>
               </div>
+
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button type="submit" class="btn btnprimary">Simpan</button>
-              <a href="index.php" type="button" class="btn
-btn-default">kembali</a>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+              <a href="index.php" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>
         </div>

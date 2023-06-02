@@ -109,15 +109,16 @@ navbar-light">
                     <td><?= $data['deskripsi']; ?></td>
                     <td><?= $data['harga']; ?></td>
                     <td><?= $data['kategori']; ?></td>
-                    <td class="text-center"><img width="100" src="gambar/<?= $data['gambar']; ?>" width="100px"></td>
+                    <td class="text-center">
+                      <img width="100" src="gambar/<?= $data['gambar']; ?>" width="100px">
+                    </td>
                     <td class="text-center">
                       <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-warning text-light">Edit</a>
                       <a href="proses_hapus.php?id=<?= $data['id']; ?>" class="btn btn-danger">Hapus</a>
                     </td>
                   </tr>
-                <?php }
+                <?php } ?>
 
-                ?>
               </tbody>
             </table>
           </div>
@@ -136,7 +137,6 @@ navbar-light">
         <b>Version</b> 3.2.0
       </div>
     </footer>
-
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
   </div>
@@ -144,12 +144,11 @@ navbar-light">
   <script src="../../assets/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="../../assets/plugins/jquery-ui/jqueryui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --
->
- <script>
- $.widget.bridge('uibutton', $.ui.button)
- </script>
- <!-- Bootstrap 4 -->
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
   <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
   <script src="../../assets/plugins/chart.js/Chart.min.js"></script>
@@ -168,8 +167,7 @@ navbar-light">
   <!-- Summernote -->
   <script src="../../assets/plugins/summernote/summernotebs4.min.js"></script>
   <!-- overlayScrollbars -->
-  <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.
-min.js"></script>
+  <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../assets/dist/js/adminlte.js"></script>
 </body>
