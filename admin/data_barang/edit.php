@@ -1,54 +1,40 @@
 <?php
 //load koneksi database
-include '../../koneksi.php';
+include_once('../../koneksi.php');
 //ambil id dari url
 $id = $_GET['id'];
 //ambil data dari database
-$query = mysqli_query($koneksi, "SELECT * FROM data_barang WHERE id
-= '$id'");
+$query = mysqli_query($koneksi, "SELECT * FROM data_barang WHERE id = '$id'");
 $data = mysqli_fetch_array($query);
 $nama_barang = $data['nama_barang'];
 $deskripsi = $data['deskripsi'];
 $harga = $data['harga'];
 $idKategori = $data['id_kategori'];
 //
+
+$kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Edit Data Barang</title>
+  <?php include_once('../template/head.php') ?>
+
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,40
-0i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../assets/plugins/fontawesomefree/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.cs
-s">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="../../assets/plugins/tempusdominusbootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../assets/plugins/icheckbootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="../../assets/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.c
-ss">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-    <?php include '../lazyLoad.php' ?>
+    <!-- Navbar -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="../../assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <ul class="navbar-nav">
@@ -60,8 +46,10 @@ ss">
       </ul>
     </nav>
 
-    <?php include '../sidebarDataBarang.php' ?>
+    <!-- Sidebar -->
+    <?php include_once('../template/sidebar.php') ?>
 
+    <!-- Content Header -->
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
@@ -71,14 +59,15 @@ ss">
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item active">Edit
-                  Data Barang</li>
+                <li class="breadcrumb-item"><a href="../dashboard.php?page=data_barang">Home</a></li>
+                <li class="breadcrumb-item active">Edit Data Barang</li>
               </ol>
             </div>
           </div>
         </div>
       </div>
+      <!-- Content Header -->
+
       <!-- MAIN CONTENT -->
       <section class="content">
         <div class="card card-primary">
@@ -107,12 +96,9 @@ ss">
 
                 <select class="form-control" name="kategori_post" required>
                   <option value="">Pilih Kategori</option>
+
                   <?php
-                  include '../../koneksi.php';
-                  $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
-
                   while ($kdata = mysqli_fetch_array($kategori)) { ?>
-
                     <option value="<?= $kdata['id'] ?>" <?php if ($kdata['id'] == $idKategori) { ?> <?= 'selected' ?> <?php } ?>>
                       <?= $kdata['kategori']; ?>
                     </option>
@@ -132,57 +118,29 @@ ss">
                 </div>
               </div>
             </div>
+
             <!-- /.card-body -->
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="index.php" type="button" class="btn btn-default">Kembali</a>
+              <a href="../dashboard.php?page=data_barang" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>
         </div>
       </section>
       <!-- MAIN CONTENT -->
     </div>
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
-      </div>
-    </footer>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
+
+    <?php include_once('../template/footer.php') ?>
   </div>
+
+
+  <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="../../assets/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="../../assets/plugins/jquery-ui/jqueryui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
   <!-- Bootstrap 4 -->
   <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="../../assets/plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="../../assets/plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="../../assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="../../assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="../../assets/plugins/jqueryknob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="../../assets/plugins/moment/moment.min.js"></script>
-  <script src="../../assets/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="../../assets/plugins/tempusdominus-bootstrap4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="../../assets/plugins/summernote/summernotebs4.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.
-min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../../assets/dist/js/adminlte.js"></script>
+  <script src="../../assets/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>

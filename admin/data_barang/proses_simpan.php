@@ -18,26 +18,26 @@ move_uploaded_file($source, $folder . $nama_file);
 //
 //simpan data ke database
 $insert = mysqli_query($koneksi, "INSERT INTO data_barang VALUES (
- NULL,
- '$nama_barang_post',
- '$deskripsi_post',
- '$harga_post',
- '$nama_file',
- '$kategori_post'
- )");
+  NULL,
+  '$nama_barang_post',
+  '$deskripsi_post',
+  '$harga_post',
+  '$nama_file',
+  '$kategori_post'
+  )");
 //
 //cek apakah proses simpan ke database berhasil
 if ($insert) {
   //jika berhasil tampilkan pesan berhasil simpan data
   echo "<script>
   alert('Data Berhasil Ditambahkan');
-  window.location.href='index.php';
+  window.location.href='../dashboard.php?page=data_barang';
   </script>";
 } else {
   //jika gagal tampilkan pesan gagal simpan data
   echo "<script>
   alert('Data Gagal Ditambahkan');
-  window.location.href='index.php';
+  window.location.href='../dashboard.php?page=data_barang';
   </script>";
 }
  //
