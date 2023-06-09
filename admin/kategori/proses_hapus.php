@@ -1,6 +1,6 @@
 <?php
 //load koneksi database
-include '../../koneksi.php';
+include_once('../../koneksi.php');
 //ambil id dari url
 $id = $_GET['id'];
 // //hapus file gambar dari folder gambar
@@ -11,20 +11,19 @@ $id = $_GET['id'];
 // unlink('./gambar/' . $nama_file);
 //
 //hapus data dari database
-$hapus = mysqli_query($koneksi, "DELETE FROM kategori WHERE id =
-'$id'");
+$hapus = mysqli_query($koneksi, "DELETE FROM kategori WHERE id = '$id'");
 
 //cek apakah proses hapus data berhasil
 if ($hapus) {
   //jika berhasil tampilkan pesan berhasil hapus data
   echo "<script>
- alert('Data Berhasil Dihapus');
- window.location.href='index.php';
- </script>";
+  alert('Data Berhasil Dihapus');
+  window.location.href='../dashboard.php?page=kategori';
+  </script>";
 } else {
   //jika gagal tampilkan pesan gagal hapus data
   echo "<script>
- alert('Data Gagal Dihapus');
- window.location.href='index.php';
- </script>";
+  alert('Data Gagal Dihapus');
+  window.location.href='../dashboard.php?page=kategori';
+  </script>";
 }
