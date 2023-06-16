@@ -33,14 +33,14 @@ $update = mysqli_query(
 if ($update) {
   //jika berhasil tampilkan pesan berhasil edit data
   echo "<script>
- alert('Data Berhasil Diubah');
- window.location.href='index.php';
- </script>";
+  alert('Data Berhasil Diubah');
+  window.location.href='../dashboard.php?page=data_barang';
+  </script>";
 } else {
   //jika gagal tampilkan pesan gagal edit data
   echo "<script>
- alert('Data Gagal Diubah');
- window.location.href='index.php';
- </script>";
+  alert('Data Gagal Diubah');
+  window.location.href='../dashboard.php?page=data_barang';
+  </script>";
 }
  //
