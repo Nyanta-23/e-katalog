@@ -91,6 +91,7 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                 <label>Harga</label>
                 <input type="text" name="harga_post" class="form-control" placeholder="Masukan Harga Barang" value="<?= $harga ?>" required>
               </div>
+
               <div class="form-group">
                 <label>Kategori</label>
 
@@ -107,6 +108,7 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                 </select>
 
               </div>
+
               <div class="form-group">
                 <label>Pilih Gambar</label>
                 <div class="input-group">

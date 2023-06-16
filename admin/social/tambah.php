@@ -1,3 +1,8 @@
+<?php
+include_once('../../koneksi.php');
+$kategori = mysqli_query($koneksi, "SELECT * FROM tb_icons");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,13 +73,19 @@
               </div>
 
               <div class="form-group">
-                <label>Icons</label>
-                <textarea name="nama_icon_post" cols="30" class="form-control" required></textarea>
+                <label for="">Icons</label>
+                <select class="form-control" name="nama_icon_post" required>
+                  <option value="">Pilih Icons</option>
+                  <?php
+                  while ($data = mysqli_fetch_array($kategori)) { ?>
+                    <option value=" <?= $data['id'] ?> "><?= $data['icons']; ?></option>
+                  <?php } ?>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>URL</label>
-                <textarea name="nama_icon_post" cols="30" class="form-control" required></textarea>
+                <textarea name="nama_url_post" cols="30" class="form-control" required></textarea>
               </div>
 
             </div>
@@ -82,7 +93,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="../dashboard.php?page=kategori" type="button" class="btn btn-default">Kembali</a>
+              <a href="../dashboard.php?page=social" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>
 

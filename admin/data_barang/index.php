@@ -48,7 +48,7 @@ $query = mysqli_query(
               <td><?= $data['harga']; ?></td>
               <td><?= $data['kategori']; ?></td>
               <td class="text-center">
-                <img width="100" src="gambar/<?= $data['gambar']; ?>" width="100px">
+                <img width="100" src="../admin/data_barang/gambar/<?= $data['gambar']; ?>" width="100px">
               </td>
               <td class="text-center">
                 <a href="data_barang/edit.php?id=<?= $data['id']; ?>&page=data_barang" class="btn btn-warning text-light">Edit</a>

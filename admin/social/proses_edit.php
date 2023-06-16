@@ -4,7 +4,10 @@ include '../../koneksi.php';
 
 //ambil data dari form
 $id = $_POST['id'];
-$nama_barang_post = $_POST['nama_barang_post'];
+$nama_social_post = $_POST['nama_social_post'];
+$icons = $_POST['icons_post'];
+$url = $_POST['nama_url_post'];
+
 // $deskripsi_post = $_POST['deskripsi_post'];
 // $harga_post = $_POST['harga_post'];
 //
@@ -16,21 +19,27 @@ $nama_barang_post = $_POST['nama_barang_post'];
 // move_uploaded_file($source, $folder . $nama_file);
 //
 //update data ke database
-$update = mysqli_query($koneksi, "UPDATE kategori SET
-  kategori = '$nama_barang_post'
-  WHERE id = '$id'");
+$update = mysqli_query(
+  $koneksi,
+  "UPDATE tb_social 
+  SET 
+  nama_sosmed = '$nama_social_post',
+  id_icons = '$icons',
+  url = '$url'
+  WHERE id = '$id'"
+);
 //cek apakah proses edit ke database berhasil
 if ($update) {
   //jika berhasil tampilkan pesan berhasil edit data
   echo "<script>
   alert('Data Berhasil Diubah');
-  window.location.href='../dashboard.php?page=kategori';
+  window.location.href='../dashboard.php?page=social';
   </script>";
 } else {
   //jika gagal tampilkan pesan gagal edit data
   echo "<script>
   alert('Data Gagal Diubah');
-  window.location.href='../dashboard.php?page=kategori';
+  window.location.href='../dashboard.php?page=social';
   </script>";
 }
  //

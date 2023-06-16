@@ -5,7 +5,8 @@ include '../../koneksi.php';
 //ambil data dari form
 $nama_sosmed = $_POST['nama_sosmed_post'];
 $nama_icons = $_POST['nama_icon_post'];
-$getSosialIcons = 'https://' . $nama_icons;
+$url = $_POST['nama_url_post'];
+// $getSosialIcons = 'https://' . $nama_icons;
 //
 //
 //simpan data ke database
@@ -14,7 +15,8 @@ $insert = mysqli_query(
   "INSERT INTO tb_social VALUES (
   NULL,
   '$nama_sosmed',
-  '$getSosialIcons'
+  '$nama_icons',
+  '$url'
 )"
 );
 
@@ -24,13 +26,13 @@ if ($insert) {
   //jika berhasil tampilkan pesan berhasil simpan data
   echo "<script>
   alert('Data Berhasil Ditambahkan');
-  window.location.href='../dashboard.php?page=kategori';
+  window.location.href='../dashboard.php?page=social';
   </script>";
 } else {
   //jika gagal tampilkan pesan gagal simpan data
   echo "<script>
   alert('Data Gagal Ditambahkan');
-    window.location.href='../dashboard.php?page=kategori';
+    window.location.href='../dashboard.php?page=social';
     </script>";
 }
 

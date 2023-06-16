@@ -1,7 +1,15 @@
 <?php
 include_once('../koneksi.php');
 $no = 1;
-$query = mysqli_query($koneksi, "SELECT * FROM tb_social");
+$query = mysqli_query(
+  $koneksi,
+  "SELECT tb_social.*, tb_icons.icons
+  FROM tb_social
+  INNER JOIN tb_icons
+  ON tb_social.id_icons = tb_icons.id
+  ORDER BY id DESC"
+);
+
 ?>
 
 <!-- MAIN CONTENT -->
@@ -19,6 +27,7 @@ $query = mysqli_query($koneksi, "SELECT * FROM tb_social");
             <th style="width: 10px">No</th>
             <th>Nama Sosmed</th>
             <th>Icon</th>
+            <th>URL</th>
             <th class="text-center">Aksi</th>
 
           </tr>
@@ -31,7 +40,11 @@ $query = mysqli_query($koneksi, "SELECT * FROM tb_social");
             <tr>
               <td><?= $no++; ?></td>
               <td><?= $data['nama_sosmed']; ?></td>
-              <td><?= $data['icon']; ?></td>
+              <td class="text-center">
+                <i style="border: 1px solid #000; border-radius: 5px;" class="text-xl p-3 fas far fa fa-<?= $data['icons']; ?>"></i>
+              </td>
+
+              <td><?= $data['url']; ?></td>
               <td class="text-center">
                 <a href="social/edit.php?id=<?= $data['id']; ?>&page=social" class="btn btn-warning text-light">Edit</a>
                 <a href="social/proses_hapus.php?id=<?= $data['id']; ?>&page=social" class="btn btn-danger">Hapus</a>

@@ -5,12 +5,18 @@ include_once('../../koneksi.php');
 //ambil id dari url
 $id = $_GET['id'];
 //ambil data dari database
-$query = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id
-= '$id'");
+$query = mysqli_query($koneksi, "SELECT * FROM tb_social WHERE id = '$id'");
 $data = mysqli_fetch_array($query);
-$nama_barang = $data['kategori'];
+$nama_social = $data['nama_sosmed'];
+$nama_url = $data['url'];
+$id_icons = $data['id_icons'];
+
 //
+
+$icons = mysqli_query($koneksi, 'SELECT * FROM tb_icons');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +29,8 @@ $nama_barang = $data['kategori'];
   <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -72,17 +80,37 @@ $nama_barang = $data['kategori'];
           <!-- form start -->
           <form action="proses_edit.php" method="post" enctype="multipart/form-data">
             <div class="card-body">
-              <input type="hidden" name="id" value="<?=
-                                                    $id ?>">
+              <input type="hidden" name="id" value="<?= $id ?>">
               <div class="form-group">
-                <label>Nama Kategori</label>
-                <input type="text" name="nama_barang_post" class="form-control" placeholder="Masukan Nama Barang" value="<?= $nama_barang ?>" required>
+                <label>Nama Social</label>
+                <input type="text" name="nama_social_post" class="form-control" placeholder="Masukan Nama Barang" value="<?= $nama_social ?>" required>
               </div>
+
+              <div class="form-group">
+                <label>Icons</label>
+                <select class="form-control" name="icons_post" required>
+                  <option value="">Pilih Icons</option>
+                  <?php
+                  while ($idata = mysqli_fetch_array($icons)) { ?>
+                    <option value="<?= $idata['id'] ?>" <?php if ($idata['id'] == $id_icons) { ?> <?= 'selected' ?> <?php } ?>>
+                      <?= $idata['icons']; ?>
+                    </option>
+                  <?php } ?>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text" name="nama_url_post" class="form-control" placeholder="Masukan URL" value="<?= $nama_url ?>" required>
+              </div>
+
+
               <!-- /.card-body -->
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <a href="../dashboard.php?page=social" type="button" class="btn btn-default">Kembali</a>
               </div>
+            </div>
           </form>
         </div>
       </section>

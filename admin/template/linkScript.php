@@ -41,3 +41,7 @@
 <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../assets/dist/js/adminlte.js"></script>
+
+
+<!-- <script type="text/javascript" src="../assets_front/js/jquery.min.js"></script>
+<script type="text/JavaScript" src="../assets_front/js/slimbox2.js"></script> -->

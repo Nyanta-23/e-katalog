@@ -54,6 +54,15 @@ $page  = $_GET['page'];
         </li>
 
         <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=twitter" class="nav-link <?php if ($page == 'twitter') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Twitter
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=social" class="nav-link <?php if ($page == 'social') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>
@@ -63,13 +72,24 @@ $page  = $_GET['page'];
         </li>
 
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=twitter" class="nav-link <?php if ($page == 'twitter') { ?>active<?php } ?>">
+          <a href="<?= $base_url ?>/dashboard.php?page=icons" class="nav-link <?php if ($page == 'icons') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>
-              Twitter
+              Icons
             </p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=slider" class="nav-link <?php if ($page == 'slider') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Slider
+            </p>
+          </a>
+        </li>
+
+
 
 
     </nav>

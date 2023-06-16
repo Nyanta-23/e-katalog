@@ -31,5 +31,13 @@
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 
+
+
   <!-- Theme style -->
   <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
+
+
+  <!-- <link href="../assets_front/templatemo_style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../assets_front/css/orman.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../assets_front/css/nivo-slider.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../assets_front/css/slimbox2.css" type="text/css" media="screen" /> -->

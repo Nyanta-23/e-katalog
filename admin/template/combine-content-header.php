@@ -21,6 +21,12 @@
           case 'twitter':
             include "twitter/content-header.php";
             break;
+          case 'icons':
+            include "icons/content-header.php";
+            break;
+          case 'slider':
+            include "slider/content-header.php";
+            break;
 
           default:
             echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
