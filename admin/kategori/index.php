@@ -1,7 +1,7 @@
 <?php
 include_once('../koneksi.php');
 $no = 1;
-$query = mysqli_query($koneksi, "SELECT * FROM kategori");
+$query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
 
 ?>
 <!-- MAIN CONTENT -->
@@ -24,19 +24,23 @@ $query = mysqli_query($koneksi, "SELECT * FROM kategori");
         <tbody>
 
           <?php
-          while ($data = mysqli_fetch_array($query)) {
-          ?>
-            <tr>
-              <td><?= $no++; ?></td>
-              <td><?= $data['kategori'];
-                  ?></td>
-              <td class="text-center">
-                <a href="kategori/edit.php?id=<?= $data['id']; ?>&page=kategori" class="btn btn-warning text-light">Edit</a>
-                <a href="kategori/proses_hapus.php?id=<?= $data['id']; ?>&kategori" class="btn btn-danger">Hapus</a>
-              </td>
-            </tr>
-          <?php }
 
+          if (mysqli_fetch_array($query) != null) :
+
+            while ($data = mysqli_fetch_array($query)) :
+          ?>
+              <tr>
+                <td><?= $no++; ?></td>
+                <td><?= $data['nama_kategori'];
+                    ?></td>
+                <td class="text-center">
+                  <a href="kategori/edit.php?id=<?= $data['id']; ?>&page=kategori" class="btn btn-warning text-light">Edit</a>
+                  <a href="kategori/proses_hapus.php?id=<?= $data['id']; ?>&kategori" class="btn btn-danger">Hapus</a>
+                </td>
+              </tr>
+          <?php
+            endwhile;
+          endif;
           ?>
         </tbody>
       </table>
