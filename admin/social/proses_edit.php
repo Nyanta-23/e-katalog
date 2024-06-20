@@ -1,45 +1,32 @@
 <?php
-//load koneksi database
+
 include '../../koneksi.php';
+if (isset($_POST["update"])) {
 
-//ambil data dari form
-$id = $_POST['id'];
-$nama_social_post = $_POST['nama_social_post'];
-$icons = $_POST['icons_post'];
-$url = $_POST['nama_url_post'];
+  $id = $_POST['id'];
+  $nama_social_post = $_POST['nama_social_post'];
+  $icons = $_POST['icons_post'];
+  $url = $_POST['nama_url_post'];
 
-// $deskripsi_post = $_POST['deskripsi_post'];
-// $harga_post = $_POST['harga_post'];
-//
+  $update = mysqli_query(
+    $koneksi,
+    "UPDATE tb_social 
+    SET 
+    name_social = '$nama_social_post',
+    icon = '$icons',
+    url = '$url'
+    WHERE id = '$id'"
+  );
 
-//proses upload gambar
-// $nama_file = $_FILES['gambar_post']['name'];
-// $source = $_FILES['gambar_post']['tmp_name'];
-// $folder = './gambar/';
-// move_uploaded_file($source, $folder . $nama_file);
-//
-//update data ke database
-$update = mysqli_query(
-  $koneksi,
-  "UPDATE tb_social 
-  SET 
-  nama_sosmed = '$nama_social_post',
-  id_icons = '$icons',
-  url = '$url'
-  WHERE id = '$id'"
-);
-//cek apakah proses edit ke database berhasil
-if ($update) {
-  //jika berhasil tampilkan pesan berhasil edit data
-  echo "<script>
-  alert('Data Berhasil Diubah');
-  window.location.href='../dashboard.php?page=social';
-  </script>";
-} else {
-  //jika gagal tampilkan pesan gagal edit data
-  echo "<script>
-  alert('Data Gagal Diubah');
-  window.location.href='../dashboard.php?page=social';
-  </script>";
+  if ($update) {
+    echo "<script>
+    alert('Data Berhasil Diubah');
+    window.location.href='../dashboard.php?page=social';
+    </script>";
+  } else {
+    echo "<script>
+    alert('Data Gagal Diubah');
+    window.location.href='../dashboard.php?page=social';
+    </script>";
+  }
 }
- //

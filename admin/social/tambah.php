@@ -1,6 +1,7 @@
 <?php
 include_once('../../koneksi.php');
-$kategori = mysqli_query($koneksi, "SELECT * FROM tb_icons");
+$icon = mysqli_query($koneksi, "SELECT * FROM tb_icons");
+
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +12,37 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM tb_icons");
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../assets/plugins/fontawesomefree/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/fontawesomefree/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../../assets/plugins/tempusdominusbootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../assets/plugins/icheckbootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -64,37 +92,40 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM tb_icons");
           <!-- /.card-header -->
           <!-- form start -->
 
-          <form action="proses_simpan.php" method="post" enctype="multipart/form-data">
+          <form action="./proses_simpan.php" method="post">
             <div class="card-body">
 
               <div class="form-group">
                 <label>Nama Sosmed</label>
-                <input type="text" name="nama_sosmed_post" class="form-control" placeholder="Masukan Nama Sosmed" required>
+                <input type="text" name="name_sosmed" class="form-control" placeholder="Masukan Nama Sosmed" required>
               </div>
 
               <div class="form-group">
                 <label for="">Icons</label>
-                <select class="form-control" name="nama_icon_post" required>
+                <select class="form-control" name="icons" required>
                   <option value="">Pilih Icons</option>
                   <?php
-                  while ($data = mysqli_fetch_array($kategori)) { ?>
-                    <option value=" <?= $data['id'] ?> "><?= $data['icons']; ?></option>
-                  <?php } ?>
+                  while ($data = mysqli_fetch_array($icon)) : ?>
+                    <option value="<?= $data['id'] ?> ">
+                      fas fa-<?= $data["icon"]?>
+                    </option>
+                  <?php endwhile; ?>
                 </select>
               </div>
 
               <div class="form-group">
                 <label>URL</label>
-                <textarea name="nama_url_post" cols="30" class="form-control" required></textarea>
+                <textarea name="url" cols="30" class="form-control" required></textarea>
               </div>
 
             </div>
             <!-- /.card-body -->
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
               <a href="../dashboard.php?page=social" type="button" class="btn btn-default">Kembali</a>
             </div>
+
           </form>
 
         </div>

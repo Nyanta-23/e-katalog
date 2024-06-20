@@ -7,9 +7,9 @@ $id = $_GET['id'];
 //ambil data dari database
 $query = mysqli_query($koneksi, "SELECT * FROM tb_social WHERE id = '$id'");
 $data = mysqli_fetch_array($query);
-$nama_social = $data['nama_sosmed'];
+$nama_social = $data['name_social'];
 $nama_url = $data['url'];
-$id_icons = $data['id_icons'];
+$id_icons = $data['icon'];
 
 //
 
@@ -91,11 +91,11 @@ $icons = mysqli_query($koneksi, 'SELECT * FROM tb_icons');
                 <select class="form-control" name="icons_post" required>
                   <option value="">Pilih Icons</option>
                   <?php
-                  while ($idata = mysqli_fetch_array($icons)) { ?>
-                    <option value="<?= $idata['id'] ?>" <?php if ($idata['id'] == $id_icons) { ?> <?= 'selected' ?> <?php } ?>>
-                      <?= $idata['icons']; ?>
+                  while ($idata = mysqli_fetch_array($icons)) : ?>
+                    <option value="<?= $idata['id'] ?>" <?php if ($idata['id'] == $id_icons) : ?> <?= 'selected' ?> <?php endif; ?>>
+                      fas fa-<?= $idata['icon']; ?>
                     </option>
-                  <?php } ?>
+                  <?php endwhile; ?>
                 </select>
               </div>
 
@@ -107,7 +107,7 @@ $icons = mysqli_query($koneksi, 'SELECT * FROM tb_icons');
 
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                 <a href="../dashboard.php?page=social" type="button" class="btn btn-default">Kembali</a>
               </div>
             </div>
