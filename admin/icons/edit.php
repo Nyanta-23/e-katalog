@@ -52,12 +52,12 @@ $icons = $data['icon'];
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Edit Data Kategori</h1>
+              <h1 class="m-0">Edit Data Icons</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="../dashboard.php?page=icons">Home</a></li>
-                <li class="breadcrumb-item active">Edit Data Kategori</li>
+                <li class="breadcrumb-item active">Edit Data Icons</li>
               </ol>
             </div>
           </div>
