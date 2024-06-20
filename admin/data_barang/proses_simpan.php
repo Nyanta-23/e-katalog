@@ -38,6 +38,7 @@ if (isset($_POST['submit'])) {
         window.location.href='../dashboard.php?page=data_barang';
         </script>";
       }
+      
     } else {
       echo '<script type="text/javascript">alert("Foto gagal diupload");window.history.go(-1);</script>';
       return false;

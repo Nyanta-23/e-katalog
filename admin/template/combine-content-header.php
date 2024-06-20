@@ -18,14 +18,11 @@
           case 'social':
             include "social/content-header.php";
             break;
-          case 'twitter':
-            include "twitter/content-header.php";
+          case 'home':
+            include "home/content-header.php";
             break;
           case 'icons':
             include "icons/content-header.php";
-            break;
-          case 'slider':
-            include "slider/content-header.php";
             break;
 
           default:

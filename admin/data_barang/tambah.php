@@ -1,6 +1,6 @@
 <?php
 include_once('../../koneksi.php');
-$kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
+$kategori = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +15,7 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
   <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -77,20 +78,24 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
               </div>
               <div class="form-group">
                 <label>Harga</label>
-                <input type="text" name="harga_post" class="form-control" placeholder="Masukan Harga Barang" required>
+                <input type="number" name="harga_post" class="form-control" placeholder="Masukan Harga Barang" required>
               </div>
 
               <div class="form-group">
-                <label for="">Kategori</label>
+                <label>Kategori</label>
 
                 <select class="form-control" name="kategori_post" required>
 
-                  <option value="">Pilih Kategori</option>
+                  <option>Pilih Kategori</option>
                   <?php
 
-                  while ($data = mysqli_fetch_array($kategori)) { ?>
-                    <option value=" <?= $data['id'] ?> "><?= $data['kategori']; ?></option>
-                  <?php } ?>
+                  if (mysqli_fetch_array($kategori) != null) :
+                    while ($data = mysqli_fetch_array($kategori)) : ?>
+                      <option value=" <?= $data['id'] ?> "><?= $data['nama_kategori']; ?></option>
+                  <?php
+                    endwhile;
+                  endif;
+                  ?>
 
                 </select>
               </div>
@@ -98,24 +103,20 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
               <div class="form-group">
                 <label>Pilih Gambar</label>
                 <div class="input-group">
-                  <div class="custom-file">
-
-                    <input style="width: 100px; height: 100px; border: 1px solid #000;" type="file" name="gambar_post" class="custom-file-input">
-
-                    <?php
-                    $page_file_temp = $_SERVER["PHP_SELF"];
-                    ?>
-
-                    <!-- <img width="100" src="gambar/<?= $data['gambar']; ?>" width="100px"> -->
-                    <label class="custom-file-label">Pilih File Gambar</label>
-                  </div>
+                  <label class="custom-file-label" style="cursor: pointer;" for="select_img">
+                    Pilih File Gambar
+                    <div class="custom-file">
+                      <input id="select_img" type="file" name="gambar_post" class="custom-file-input" required />
+                    </div>
+                  </label>
                 </div>
+                <img width="100" src="./gambar/<?= $data['gambar']; ?>" width="100px" />
               </div>
 
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
               <a href="../dashboard.php?page=data_barang" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>
@@ -134,6 +135,7 @@ $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
   <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../assets/dist/js/adminlte.min.js"></script>
+
 </body>
 
 </html>

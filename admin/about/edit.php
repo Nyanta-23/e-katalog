@@ -6,10 +6,8 @@ include_once('../../koneksi.php');
 $id = $_GET['id'];
 //ambil data dari database
 $query = mysqli_query($koneksi, "SELECT * FROM tb_about WHERE id = '$id'");
-$data = mysqli_fetch_array($query);
-$judul_about = $data['judul'];
-$isi_about = $data['isi'];
-//
+$about = mysqli_fetch_assoc($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,25 +69,20 @@ $isi_about = $data['isi'];
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="proses_edit.php" method="post" enctype="multipart/form-data">
+          <form action="./proses_edit.php" method="post">
             <div class="card-body">
               <input type="hidden" name="id" value="<?= $id ?>">
               <div class="form-group">
 
                 <div class="form-group">
-                  <label>Nama Judul About</label>
-                  <input type="text" name="judul_about_post" class="form-control" placeholder="Masukan Judul About" value="<?= $judul_about ?>" required>
-                </div>
-
-                <div class="form-group">
-                  <label>Isi</label>
-                  <textarea name="isi_about_post" class="form-control" rows="3" required><?= $isi_about ?></textarea>
+                  <label>About</label>
+                  <textarea name="about" class="form-control" rows="3" required><?= $about["about"] ?></textarea>
                 </div>
 
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                 <a href="http://localhost/ekatalog/admin/dashboard.php?page=about" type="button" class="btn btn-default">Kembali</a>
               </div>
           </form>

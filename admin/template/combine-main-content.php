@@ -17,14 +17,11 @@
           case 'social':
             include "social/index.php";
             break;
-          case 'twitter':
-            include "twitter/index.php";
+          case 'home':
+            include "home/index.php";
             break;
           case 'icons':
             include "icons/index.php";
-            break;
-          case 'slider':
-            include "slider/index.php";
             break;
 
           default:
@@ -32,7 +29,7 @@
             break;
         }
       } else {
-        "Error";
+        include "./../index.php";
       }
 
       ?>

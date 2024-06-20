@@ -2,14 +2,14 @@
 include_once('../koneksi.php');
 
 $no = 1;
-// $query = mysqli_query($koneksi, "SELECT * FROM data_barang");
+// $query = mysqli_query($koneksi, "SELECT * FROM tb_barang");
 
 $query = mysqli_query(
   $koneksi,
-  "SELECT data_barang.*, kategori.kategori
-  FROM data_barang
-  INNER JOIN kategori 
-  ON data_barang.id_kategori = kategori.id
+  "SELECT tb_barang.*, tb_kategori.nama_kategori
+  FROM tb_barang
+  INNER JOIN tb_kategori
+  ON tb_barang.kategori = tb_kategori.id
   ORDER BY id DESC"
 );
 
@@ -39,23 +39,25 @@ $query = mysqli_query(
         <tbody>
 
           <?php
-          while ($data = mysqli_fetch_array($query)) {
+
+            while ($data = mysqli_fetch_array($query)) : ?>
+              <tr>
+                <td><?= $no++; ?></td>
+                <td><?= $data['nama_barang']; ?></td>
+                <td><?= $data['deskripsi']; ?></td>
+                <td><?= $data['harga']; ?></td>
+                <td><?= $data['nama_kategori']; ?></td>
+                <td class="text-center">
+                  <img width="100" src="./../admin/data_barang/gambar/<?= $data['gambar']; ?>" width="100px">
+                </td>
+                <td class="text-center">
+                  <a href="data_barang/edit.php?id=<?= $data['id']; ?>&page=data_barang" class="btn btn-warning text-light">Edit</a>
+                  <a href="data_barang/proses_hapus.php?id=<?= $data['id']; ?>&page=data_barang" onclick="return confirm('Anda yakin ingin menghapusnya?')" class="btn btn-danger">Hapus</a>
+                </td>
+              </tr>
+          <?php
+            endwhile;
           ?>
-            <tr>
-              <td><?= $no++; ?></td>
-              <td><?= $data['nama_barang']; ?></td>
-              <td><?= $data['deskripsi']; ?></td>
-              <td><?= $data['harga']; ?></td>
-              <td><?= $data['kategori']; ?></td>
-              <td class="text-center">
-                <img width="100" src="../admin/data_barang/gambar/<?= $data['gambar']; ?>" width="100px">
-              </td>
-              <td class="text-center">
-                <a href="data_barang/edit.php?id=<?= $data['id']; ?>&page=data_barang" class="btn btn-warning text-light">Edit</a>
-                <a href="data_barang/proses_hapus.php?id=<?= $data['id']; ?>&page=data_barang" class="btn btn-danger">Hapus</a>
-              </td>
-            </tr>
-          <?php } ?>
 
         </tbody>
       </table>

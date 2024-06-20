@@ -1,16 +1,16 @@
 <?php
 include_once('koneksi.php');
-$queryAbout = mysqli_query($koneksi, "SELECT * FROM tb_about");
-$queryTwitter = mysqli_query($koneksi, "SELECT * FROM tb_twitter");
+// $queryAbout = mysqli_query($koneksi, "SELECT * FROM tb_about");
+// $queryTwitter = mysqli_query($koneksi, "SELECT * FROM tb_twitter");
 
-$querySocial = mysqli_query(
-  $koneksi,
-  "SELECT tb_social.*, tb_icons.icons
-  FROM tb_social
-  INNER JOIN tb_icons
-  ON tb_social.id_icons = tb_icons.id
-  ORDER BY id DESC"
-);
+// $querySocial = mysqli_query(
+//   $koneksi,
+//   "SELECT tb_social.*, tb_icons.icons
+//   FROM tb_social
+//   INNER JOIN tb_icons
+//   ON tb_social.id_icons = tb_icons.id
+//   ORDER BY id DESC"
+// );
 
 ?>
 
@@ -19,7 +19,7 @@ $querySocial = mysqli_query(
     <h4>Social</h4>
 
 
-    <ul class="nobullet social">
+    <!-- <ul class="nobullet social">
       <?php while ($dataSocial = mysqli_fetch_array($querySocial)) { ?>
         <li>
           <a href="<?= $dataSocial['url'] ?>" class="<?= $dataSocial['icons']; ?>">
@@ -27,7 +27,7 @@ $querySocial = mysqli_query(
           </a>
         </li>
       <?php } ?>
-    </ul>
+    </ul> -->
   </div>
 
   <!-- <li><a href="#" class="facebook">Facebook</a></li>
