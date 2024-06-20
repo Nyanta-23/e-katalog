@@ -4,10 +4,10 @@ include_once('../../koneksi.php');
 //ambil id dari url
 $id = $_GET['id'];
 //ambil data dari database
-$query = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id = '$id'");
+$query = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id = '$id'");
 $data = mysqli_fetch_array($query);
-$nama_barang = $data['kategori'];
-//
+$kategori = $data['nama_kategori'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,20 +69,20 @@ $nama_barang = $data['kategori'];
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="proses_edit.php" method="post" enctype="multipart/form-data">
+          <form action="proses_edit.php" method="post">
             <div class="card-body">
               <input type="hidden" name="id" value="<?= $id ?>">
               <div class="form-group">
                 <label>Nama Kategori</label>
-                <input type="text" name="nama_barang_post" class="form-control" placeholder="Masukan Nama Barang" value="<?= $nama_barang ?>" required>
+                <input type="text" name="kategori" class="form-control" placeholder="Masukan Kategori" value="<?= $kategori ?>" required>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="../dashboard.php?page=kategori" type="button" class="btn btn-default">Kembali</a>
-              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" name="update" class="btn btn-primary">Simpan</button>
+              <a href="../dashboard.php?page=kategori" type="button" class="btn btn-default">Kembali</a>
+            </div>
           </form>
-        </div>
       </section>
       <!-- MAIN CONTENT -->
     </div>

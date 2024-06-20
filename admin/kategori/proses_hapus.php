@@ -11,7 +11,7 @@ $id = $_GET['id'];
 // unlink('./gambar/' . $nama_file);
 //
 //hapus data dari database
-$hapus = mysqli_query($koneksi, "DELETE FROM kategori WHERE id = '$id'");
+$hapus = mysqli_query($koneksi, "DELETE FROM tb_kategori WHERE id = '$id'");
 
 //cek apakah proses hapus data berhasil
 if ($hapus) {

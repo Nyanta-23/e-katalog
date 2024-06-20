@@ -58,16 +58,16 @@
 
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="proses_simpan.php" method="post" enctype="multipart/form-data">
+          <form action="proses_simpan.php" method="post">
             <div class="card-body">
               <div class="form-group">
-                <label>Nama Barang</label>
-                <input type="text" name="nama_kategori" class="form-control" placeholder="Masukan Nama Barang" required>
+                <label>Nama Kategori</label>
+                <input type="text" name="kategori" class="form-control" placeholder="Masukan Nama Barang" required>
               </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
               <a href="../dashboard.php?page=kategori" type="button" class="btn btn-default">Kembali</a>
             </div>
           </form>

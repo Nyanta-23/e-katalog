@@ -24,23 +24,18 @@ $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
         <tbody>
 
           <?php
-
-          if (mysqli_fetch_array($query) != null) :
-
             while ($data = mysqli_fetch_array($query)) :
           ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $data['nama_kategori'];
-                    ?></td>
+                <td><?= $data['nama_kategori']; ?></td>
                 <td class="text-center">
                   <a href="kategori/edit.php?id=<?= $data['id']; ?>&page=kategori" class="btn btn-warning text-light">Edit</a>
-                  <a href="kategori/proses_hapus.php?id=<?= $data['id']; ?>&kategori" class="btn btn-danger">Hapus</a>
+                  <a onclick="return confirm('Apakah anda yakin ingin menghapusnya?')" href="kategori/proses_hapus.php?id=<?= $data['id']; ?>&kategori" class="btn btn-danger">Hapus</a>
                 </td>
               </tr>
           <?php
             endwhile;
-          endif;
           ?>
         </tbody>
       </table>
