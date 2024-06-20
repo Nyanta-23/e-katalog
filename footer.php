@@ -1,16 +1,15 @@
 <?php
 include_once('koneksi.php');
-// $queryAbout = mysqli_query($koneksi, "SELECT * FROM tb_about");
-// $queryTwitter = mysqli_query($koneksi, "SELECT * FROM tb_twitter");
+$queryAbout = mysqli_query($koneksi, "SELECT * FROM tb_about");
 
-// $querySocial = mysqli_query(
-//   $koneksi,
-//   "SELECT tb_social.*, tb_icons.icons
-//   FROM tb_social
-//   INNER JOIN tb_icons
-//   ON tb_social.id_icons = tb_icons.id
-//   ORDER BY id DESC"
-// );
+$social = mysqli_query(
+  $koneksi,
+  "SELECT tb_social.*, tb_icons.icon
+  FROM tb_social
+  INNER JOIN tb_icons
+  ON tb_social.icon = tb_icons.id
+  ORDER BY id DESC"
+);
 
 ?>
 
@@ -18,52 +17,26 @@ include_once('koneksi.php');
   <div class="col col_3">
     <h4>Social</h4>
 
-
-    <!-- <ul class="nobullet social">
-      <?php while ($dataSocial = mysqli_fetch_array($querySocial)) { ?>
+    <ul class="nobullet social">
+      <?php while ($dataSocial = mysqli_fetch_assoc($social)) : ?>
         <li>
-          <a href="<?= $dataSocial['url'] ?>" class="<?= $dataSocial['icons']; ?>">
-            <?= $dataSocial['nama_sosmed']; ?>
+          <a href="<?= $dataSocial['url'] ?>">
+            <i style="font-size: 1em; color: black;" class="p-3 fas fa-<?= $dataSocial['icon']; ?>"></i>
+            <?= $dataSocial['name_social']; ?>
           </a>
         </li>
-      <?php } ?>
-    </ul> -->
+      <?php endwhile; ?>
+    </ul>
   </div>
 
-  <!-- <li><a href="#" class="facebook">Facebook</a></li>
-  <li><a href="#" class="twitter">Twitter</a></li>
-  <li><a href="#" class="youtube">Youtube</a></li>
-  <li><a href="#" class="google">Google+</a></li>
-  <li><a href="#" class="vimeo">Vimeo</a></li>
-  <li><a href="#" class="skype">Skype</a></li> -->
-
-  <!-- Tiwtter -->
-  <?php while ($dataTwitter = mysqli_fetch_array($queryTwitter)) { ?>
-    <div class="col col_3">
-      <h4><?= $dataTwitter['judul']; ?></h4>
-      <ul class="nobullet twitter">
-        <?= $dataTwitter['isi']; ?>
-      </ul>
-    </div>
-  <?php } ?>
-
-  <!-- <div class="col col_3">
-      <h4>Twitter</h4>
-      <ul class="nobullet twitter">
-        <li><a href="#">@templatemo</a> at scelerisque urna in tellus varius ultricies.</li>
-        <li>Suspendisse enean <a href="#">#FREE</a> tincidunt massa in tellus varius ultricies.</li>
-        <li> Aenean tincidunt massa in tellus varius ultricies. <a href="#">http://bit.ly/13IwZO</a></li>
-      </ul>
-    </div> -->
-
   <!-- About -->
-  <?php while ($dataAbout = mysqli_fetch_array($queryAbout)) { ?>
+  <?php while ($dataAbout = mysqli_fetch_assoc($queryAbout)) : ?>
     <div class="col col_3">
-      <h4><?= $dataAbout['judul']; ?></h4>
-      <p><?= $dataAbout['isi']; ?></p>
+      <h4>Tentang</h4>
+      <p><?= $dataAbout['about']; ?></p>
     </div>
 
-  <?php }  ?>
+  <?php endwhile; ?>
 
 
   <div class="clear"></div>

@@ -16,9 +16,22 @@ $slider = mysqli_query($koneksi, "SELECT * FROM tb_barang");
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <link href="assets_front/templatemo_style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets_front/css/orman.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="assets_front/css/nivo-slider.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="assets_front/css/slimbox2.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./assets_front/css/orman.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./assets_front/css/nivo-slider.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./assets_front/css/slimbox2.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./assets/plugins/fontawesomefree/css/all.min.css">
+  <link rel="stylesheet" href="./assets/plugins/fontawesomefree/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="./assets/plugins/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="./assets/docs/">
 
   <script type="text/javascript" src="assets_front/js/jquery.min.js"></script>
   <script type="text/javaScript" src="assets_front/js/slimbox2.js"></script>
