@@ -1,18 +1,15 @@
 <?php
-//load koneksi database
 include_once('../../koneksi.php');
 
-//ambil id dari url
 $id = $_GET['id'];
-//ambil data dari database
+
 $query = mysqli_query($koneksi, "SELECT * FROM tb_icons WHERE id = '$id'");
-$data = mysqli_fetch_array($query);
-$nama_icons = $data['nama_icons'];
-$class_icons = $data['icons'];
+$data = mysqli_fetch_assoc($query);
 
+$icons = $data['icon'];
 
-//
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +23,7 @@ $class_icons = $data['icons'];
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
 
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -77,22 +74,17 @@ $class_icons = $data['icons'];
           <form action="proses_edit.php" method="post" enctype="multipart/form-data">
             <div class="card-body">
               <input type="hidden" name="id" value="<?= $id ?>">
-              <div class="form-group">
-                <label>Nama Icons</label>
-                <input type="text" name="nama_icons_post" class="form-control" placeholder="Masukan Nama Icons" value="<?= $nama_icons ?>" required>
-              </div>
 
               <div class="form-group">
                 <label>Icons</label>
-                <textarea name="icons_post" cols="30" class="form-control" required><?= $class_icons; ?></textarea>
-                <div class="text-center mt-3">
-                  <i style="border: 1px solid #000; border-radius: 5px;" class="text-xl p-3 fas far fa fa-<?= $class_icons; ?>"></i>
-                </div>
+                <input type="text" name="icon" class="form-control" value="<?= $icons; ?>" placeholder="Masukkan Icon" required>
               </div>
 
+
               <!-- /.card-body -->
+              </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                 <a href="../dashboard.php?page=icons" type="button" class="btn btn-default">Kembali</a>
               </div>
           </form>

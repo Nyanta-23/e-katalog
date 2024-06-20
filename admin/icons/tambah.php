@@ -1,3 +1,8 @@
+<?php
+include_once('../../koneksi.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,12 +43,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Tambah Social</h1>
+              <h1 class="m-0">Tambah Icons</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../dashboard.php?page=social">Home</a></li>
-                <li class="breadcrumb-item active">Tambah Social</li>
+                <li class="breadcrumb-item"><a href="../dashboard.php?page=icons">Home</a></li>
+                <li class="breadcrumb-item active">Tambah Icons</li>
               </ol>
             </div>
           </div>
@@ -54,7 +59,7 @@
       <section class="content">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Form Social</h3>
+            <h3 class="card-title">Form Icons</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -63,26 +68,27 @@
             <div class="card-body">
 
               <div class="form-group">
-                <label>Nama Icons</label>
-                <input type="text" name="nama_icons_post" class="form-control" placeholder="Masukan Nama Sosmed" required>
-              </div>
-
-              <div class="form-group">
-                <label>Icons</label>
-                <textarea name="icons_post" cols="30" class="form-control" required></textarea>
+                <label>Icon</label>
+                <input type="text" name="icon" class="form-control" placeholder="Masukkan Icon" required>
               </div>
 
             </div>
             <!-- /.card-body -->
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="../dashboard.php?page=kategori" type="button" class="btn btn-default">Kembali</a>
+              <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+              <a href="./../dashboard.php?page=icons" type="button" class="btn btn-default">Kembali</a>
+            </div>
+
+            <div class="card-footer clearfix">
+              <p>For reference icon see from this <a href="https://adminlte.io/themes/AdminLTE/pages/UI/icons.html">Link</a></p>
             </div>
           </form>
 
         </div>
+
       </section>
+
       <!-- MAIN CONTENT -->
     </div>
 
